@@ -46,3 +46,5 @@ make prepare
 ## References
 
 1. [Rabbitmq - Non-Blocking Retry Solutions In SpringBoot](https://medium.com/@qgervacio/rabbitmq-non-blocking-retry-solutions-in-springboot-fe589f69f367)
+2. [Non-Blocking Retry Solution A - SpringBoot](https://github.com/qgervacio/nbr-sola-sboot)
+2. [Non-Blocking Retry Solution B - SpringBoot](https://github.com/qgervacio/nbr-solb-sboot)
