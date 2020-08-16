@@ -1,0 +1,27 @@
+# Copyright (c) 2020 Quirino Gervacio
+
+version: "3"
+
+services:
+  rabbitmq-a:
+    image: rabbitmq:management
+    ports:
+    - 5672:5672
+    - 15672:15672
+    environment:
+    - RABBITMQ_DEFAULT_USER=admin
+    - RABBITMQ_DEFAULT_PASS=admin
+    volumes:
+    - ./data:/tmp
+
+  rabbitmq-b:
+    image: rabbitmq:management
+    ports:
+    - 5673:5672
+    - 15673:15672
+    environment:
+    - RABBITMQ_DEFAULT_USER=admin
+    - RABBITMQ_DEFAULT_PASS=admin
+    volumes:
+    - ./data:/tmp
+    - ./plugin:/tmp/plg

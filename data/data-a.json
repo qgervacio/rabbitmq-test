@@ -1,0 +1,126 @@
+{
+  "rabbit_version": "3.8.5",
+  "rabbitmq_version": "3.8.5",
+  "product_name": "RabbitMQ",
+  "product_version": "3.8.5",
+  "users": [
+    {
+      "name": "admin",
+      "password": "admin",
+      "tags": "administrator"
+    },
+    {
+      "name": "test",
+      "password": "test",
+      "tags": "monitoring"
+    }
+  ],
+  "vhosts": [{ "name": "/" }],
+  "permissions": [
+    {
+      "user": "admin",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "test",
+      "vhost": "/",
+      "configure": "",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "topic_permissions": [
+    {
+      "user": "test",
+      "vhost": "/",
+      "exchange": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "parameters": [],
+  "global_parameters": [],
+  "policies": [],
+  "queues": [
+    {
+      "name": "test",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": { "x-queue-type": "classic" }
+    },
+    {
+      "name": "test-fail",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": { 
+        "x-queue-type": "classic",
+        "x-dead-letter-exchange": "test",
+        "x-dead-letter-routing-key": "test-fail.retry"
+      }
+    },
+    {
+      "name": "test-fail.retry",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": { "x-queue-type": "classic" }
+    },
+    {
+      "name": "test-park",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": { "x-queue-type": "classic" }
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "test",
+      "vhost": "/",
+      "type": "direct",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "test",
+      "vhost": "/",
+      "destination": "test",
+      "destination_type": "queue",
+      "routing_key": "test",
+      "arguments": {}
+    },
+    {
+      "source": "test",
+      "vhost": "/",
+      "destination": "test-fail",
+      "destination_type": "queue",
+      "routing_key": "test-fail",
+      "arguments": {}
+    },
+    {
+      "source": "test",
+      "vhost": "/",
+      "destination": "test-fail.retry",
+      "destination_type": "queue",
+      "routing_key": "test-fail.retry",
+      "arguments": {}
+    },
+    {
+      "source": "test",
+      "vhost": "/",
+      "destination": "test-park",
+      "destination_type": "queue",
+      "routing_key": "test-park",
+      "arguments": {}
+    }
+  ]
+}
