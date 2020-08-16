@@ -6,7 +6,7 @@ in implementing a non-blocking retry solutions for RabbitMQ using Spring Framewo
 ## Environments
 
 Starting the test containers and running the preparation will give
-you 2 environmnets. Use `admin`/`admin` for username and password
+you 2 environments. Use `admin`/`admin` for username and password
 to login to management console for both environments.
 
 1. `RabbitMQ A` - 4 queues, no plugin.
